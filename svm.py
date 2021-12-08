@@ -28,6 +28,7 @@ class ObjFunc(object):
 
 
 if __name__ == "__main__":
+    log_file = './log/log.txt'
     for i in range(MAT_X.shape[0]):
         s = plt.scatter(MAT_X[i,0], MAT_X[i,1],
                             marker='.' if vec_y[i] == 1 else '.', 
@@ -35,21 +36,19 @@ if __name__ == "__main__":
     plt.show()
 
     x = np.zeros(vec_b.shape[0])
-    zt = Zoutend(MAT_C,vec_c,MAT_E,vec_e,ObjFunc,x)
-    zt.search()
+    with open(log_file,'w') as lf:
+        zt = Zoutend(MAT_C,vec_c,MAT_E,vec_e,ObjFunc,x,file=lf)
+        zt.search()
+        lf.flush()
     res = zt.opt
     alpha_y = res * vec_y
     omega = np.dot(np.transpose(MAT_X),alpha_y)
-    # print(zt.x)
     sv_idx = np.where(zt.x > 1e-12) # extract support vectors
     gv_idx = np.where(np.isclose(zt.x,C,atol=1e-3)) # extract gap vectors
     sv_alpha = zt.x[sv_idx[0]]
     print("sv_alphas:",sv_alpha)
     b = vec_y[sv_idx[0]] - np.dot(MAT_X[sv_idx[0]],omega)
-    # print(b)
     b_av = np.sum(b)/b.shape[0]
-    # print(b_av)
-    # print(omega)
 
     p,n = True, True
     for i in range(MAT_X.shape[0]): # plot all samples

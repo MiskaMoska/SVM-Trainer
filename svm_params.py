@@ -9,14 +9,14 @@ import matplotlib.pyplot as plt
 C = 0.03
 
 L1=0
-R1=15
+R1=5
 D1=0
-U1=10
+U1=5
 
-L2=11
-R2=28
-D2=20
-U2=40
+L2=3
+R2=8
+D2=3
+U2=8
 
 x1 = np.random.rand(100,2)
 x1[:,0] = x1[:,0] * (R1-L1) + L1
