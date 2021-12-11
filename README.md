@@ -9,6 +9,8 @@ Open your bash and change to the project directory, run
 python -u svm.py
 ```
 
+Change file `svm_params.py` to change the distribution of two classes of samples
+
 ## What's the point? 
 
 SVM (Support Vector Machine) is a popular machine-learning algorithm, usually we can implement a SVM model using Python modules conveniently. These modules hide a lot of details about how to train a SVM model by mathematical methods. 
