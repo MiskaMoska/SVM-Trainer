@@ -20,7 +20,7 @@ for i in range(log_num):
 ovl = 0
 for i in range(log_num):
     plt.plot(x[i],y[i],'-',label='class overlap '+str(ovl)+'%',
-                linewidth = 5)
+                linewidth = 3)
     ovl += 15
 
 plt.xlabel('number of iterations',fontsize='14')
