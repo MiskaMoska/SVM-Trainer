@@ -12,7 +12,7 @@ C is quite a magical parameter,
 you can't easily figure out how it works but
 here are some tips about how to choose the value of it:
 ------------------------------------------------------------
-@1. when the quantity of samples increases, lift it up.
+@1. when the quantity of samples increases, reduce it.
 @2. when the two classes are difficult to divide, reduce it.
 @3. when the value of samples are big, lift it up. But usually we use
     the normalized sample values so that we don't need to care about this problem.
