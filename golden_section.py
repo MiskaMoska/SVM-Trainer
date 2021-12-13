@@ -1,16 +1,14 @@
 import math
 import sys
 
-from numpy import left_shift, less
-
 class Function(object):
     def __init__(self):
         super().__init__()
-        self.cnt = 0
     
     def lambda_func(self, x):
         y = math.pow(x,2)-2*x
         return y
+
 
 def GoldenSectionRecu(Function, LeftBound, RightBound, LastPoint, 
                     LastStride, Mode = 1, Alpha=(math.sqrt(5)-1)/2, Thresh=1e-12):
@@ -18,8 +16,6 @@ def GoldenSectionRecu(Function, LeftBound, RightBound, LastPoint,
         Function._x = LeftBound
         Function._y = Function.lambda_func(LeftBound)
         return
-    Function.cnt += 1
-    # print("iter:",Function.cnt)
     now_stride = Alpha * LastStride 
     if Mode == 0: #left search, regard LastPoint as lamb
         lamb = RightBound - now_stride
@@ -35,6 +31,7 @@ def GoldenSectionRecu(Function, LeftBound, RightBound, LastPoint,
     else:
         GoldenSectionRecu(Function, LeftBound, mu, lamb, now_stride, Mode=0)
     return
+
 
 def GoldenSection(Function, LB, RB):
     if LB > RB:

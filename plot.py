@@ -1,8 +1,4 @@
-import matplotlib as mpl
 from matplotlib import pyplot as plt
-import os
-
-from numpy.core.fromnumeric import size
 
 log_num = 5
 x,y = [],[]

@@ -4,18 +4,26 @@ from svm_params import *
 from matplotlib import markers, pyplot as plt
 
 class ObjFunc(object):
+    '''
+    Object function for SVM
+    '''
 
     def __init__(self):
         super().__init__()
-        self.cnt = 0
     
     def func(self, x):
+        '''
+        Object function
+        '''
         temp = np.dot(MAT_A,x)
         temp = np.dot(x,temp)/2
         temp += np.dot(vec_b,x)
         return temp
 
     def grad(self, x):
+        '''
+        Gradient function
+        '''
         return np.dot(MAT_A,x) + vec_b
 
     def upd_state(self, x_k, d_k):
@@ -23,6 +31,9 @@ class ObjFunc(object):
         self.d_k = d_k
 
     def lambda_func(self, lamb):
+        '''
+        Function wrapper for 1-D optimization
+        '''
         return self.func(self.x_k + lamb * self.d_k)
 
 
@@ -33,7 +44,7 @@ if __name__ == "__main__":
         s = plt.scatter(MAT_X[i,0], MAT_X[i,1],
                             marker='.' if vec_y[i] == 1 else '.', 
                             s=50, color = 'b' if vec_y[i] == 1 else 'r')
-    plt.show()
+    plt.show() # preshow the samples
 
     x = np.zeros(vec_b.shape[0])
     with open(log_file,'w') as lf:

@@ -6,9 +6,11 @@ from scipy import optimize
 from golden_section import GoldenSection
 
 class ObjFunc(object):
+    '''
+    A test object function for Zoutendijk
+    '''
     def __init__(self):
         super().__init__()
-        self.cnt = 0
     
     def func(self, x):
         y = math.pow(x[0],2) + 2*math.pow(x[1],2) + 3*math.pow(x[2],2)\
@@ -26,8 +28,6 @@ class ObjFunc(object):
 
     def lambda_func(self, lamb):
         return self.func(self.x_k + lamb * self.d_k)
-
-
 
 
 class Zoutend(object):
@@ -102,6 +102,9 @@ class Zoutend(object):
         return False
 
     def opt_lambda(self):
+        '''
+        This method optimizes search stride "lambda"
+        '''
         self.f.upd_state(self.x,self.d)
         self.d_bar = np.dot(self.A2,self.d)
         idx = np.where(self.d_bar < 0)
@@ -114,6 +117,9 @@ class Zoutend(object):
         self.x += self.f._x * self.d
 
     def search(self):
+        '''
+        Run method
+        '''
         n = 1
         while True:
             if self.opt_d():
@@ -131,6 +137,8 @@ if __name__ == "__main__":
     e = None
     zt = Zoutend(A,b,E,e,ObjFunc,init_x)
     zt.search()
+    print("optimal solution:",zt.x)
+    print("optimal value:",zt.opt)
 
 
 

@@ -1,11 +1,4 @@
-from types import resolve_bases
-import pandas as pd
 import numpy as np
-import math
-import copy
-import matplotlib as mpl
-import matplotlib.pyplot as plt
-
 
 '''
 C is quite a magical parameter, 
