@@ -18,16 +18,16 @@ The following patameters determine the distribution of two classes
 Each four bounds determine the limiting area of the random samples of each class
 '''
 # Class A
-L1=0 # Left bound
-R1=5 # Right bound
+L1=3 # Left bound
+R1=8 # Right bound
 D1=0 # Down bound
 U1=5 # Up bound
 
 # Class B
 L2=3 # Left bound
 R2=8 # Right bound
-D2=3 # Down bound
-U2=8 # Up bound
+D2=10 # Down bound
+U2=14 # Up bound
 
 x1 = np.random.rand(100,2)
 x1[:,0] = x1[:,0] * (R1-L1) + L1
